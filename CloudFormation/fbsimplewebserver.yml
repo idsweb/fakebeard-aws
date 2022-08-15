@@ -1,0 +1,47 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Single instance web server
+Parameters: 
+  Subnet:
+    Description: Where the instance will be placed
+    Type: String|Number|CommaDelimitedList
+    Default: -
+  IamInstanceProfile:
+    Description: It would be a good idea to put the name of the SSM instance type here
+    Type: String|Number|CommaDelimitedList
+    Default: -
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: 
+      GroupDescription: 
+      VpcId:
+      SecurityGroupIngress:
+        - Security Group Rule
+      SecurityGroupEgress:
+        - Security Group Rule
+      Tags:
+        - Key:
+          Value:
+  InstanceType:
+    Type: String
+    Default: t3.micro
+    AllowedValues:
+      - t3.micro
+      - t3.nano
+      - t3.small
+      - t3.medium
+Resources:
+  fbEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-090fa75af13c156b4
+      InstanceType: 
+      SecurityGroupIds:
+        - sg-id
+      UserData: !Base64 |
+        #!/bin/bash -ex
+        # put your script here
+      Tags:
+        - Key: key
+          Value: value
