@@ -32,7 +32,13 @@ Change the permissions
 aws s3api put-bucket-policy --bucket mywebsite --policy file://bucketpolicy.json
 ```
 
+To turn on logging create another bucket
+```
+aws s3 mb s3://mywebsite-logs --region us-east-1
+```
+enable server side logging and then choose the bucket above.
+
 to clean up the bucket use
 ```
-aws s3api delete-bucket --bucket my-bucket --region us-east-1
+aws s3 rb s3://mywebsite --force  
 ```
